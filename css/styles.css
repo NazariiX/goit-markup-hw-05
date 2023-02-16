@@ -23,17 +23,22 @@
   background: rgba(46, 47, 66, 0.4);
   opacity: 1;
   visibility: visible;
-  /* transition: ; */
+  transition: opacity 250ms linear, visibility 300ms linear;
 }
 .backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
+
+.backdrop.is-hidden .modal {
+  transition: translate 300ms linear;
+}
+
 .modal {
   position: absolute;
   width: 408px;
-  height: 576px;
+  min-height: 576px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -41,11 +46,32 @@
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  padding: 24px;
+  transition: transform 300ms linear;
 }
-.modal-icon-close {
-  background: #E7E9FC;
+
+.modal-close {
+  width: 24px;
+  height: 24px;
+  background: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: auto;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  background: #404bbf;
+  fill: #ffffff;
+  border-radius: 4px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 /* кінець мод вікна */
 p,
@@ -119,12 +145,26 @@ body {
 .item {
   margin-right: 40px;
 }
+.active-link {
+  position: relative;
+}
 .active-link:hover,
 .active-link:focus,
 .active-link.current {
   color: var(--pressed-state);
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.active-link.link.current::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #404bbf;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .phone {
@@ -134,6 +174,8 @@ body {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mail {
   font-family: "Roboto", sans-serif;
@@ -142,18 +184,16 @@ body {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mail:hover,
 .mail:focus {
   color: var(--pressed-state);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .phone:hover,
 .phone:focus {
   color: var(--pressed-state);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-adress {
   display: flex;
@@ -215,13 +255,13 @@ body {
   background: #4d5ae5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-hero:hover,
 .button-hero:focus {
   background: var(--pressed-state);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* ___________hero end______________ */
 
@@ -277,6 +317,8 @@ body {
   flex-direction: row;
   align-items: flex-start;
   padding: 12px 24px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-filtr-text {
   font-family: inherit;
@@ -295,18 +337,16 @@ body {
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   border: none;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-link {
   display: block;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .img-link:hover,
 .img-link:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .going-title {
@@ -420,8 +460,6 @@ body {
 .customers-link:focus {
   border-color: #404bbf;
   color: #404bbf;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-link {
   display: flex;
@@ -432,6 +470,8 @@ body {
   color: #8e8f99;
   border: 1px solid #8e8f99;
   border-radius: 4px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hover-icons {
   fill: currentColor;
@@ -471,12 +511,12 @@ body {
 .team-soc-item :hover,
 .team-soc-item :focus {
   background-color: #404bbf;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-soc-item {
   width: 40px;
   height: 40px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-soc-link {
   width: 100%;
@@ -497,13 +537,13 @@ body {
 .ft-soc-item {
   width: 40px;
   height: 40px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ft-soc-item :hover,
 .ft-soc-item :focus {
   background: #31d0aa;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ft-soc-link {
