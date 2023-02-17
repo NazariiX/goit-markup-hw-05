@@ -285,9 +285,9 @@ body {
   gap: 24px;
   row-gap: 48px;
 }
-.img-item {
-  /* width: calc((100%-60px) / 3); */
-}
+/* .img-item {
+  width: calc((100%-60px) / 3);
+} */
 
 .img-item:hover .img-cover-text,
 .img-link:focus .img-cover-text {
