@@ -337,7 +337,7 @@ body {
   flex-direction: row;
   align-items: flex-start;
   padding: 12px 24px;
-  transition-property: color, background, box-shadow;
+  transition-property: color, background;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
